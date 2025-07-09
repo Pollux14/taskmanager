@@ -1,0 +1,518 @@
+/* Universal Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #e0f2f7; /* Light blue background */
+    /* Removed: background: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%); */
+    min-height: 100vh;
+    display: flex; /* Centering content vertically and horizontally */
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Some padding around the edge */
+}
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    width: 100%; /* Ensure it spans available width */
+    background: rgba(255, 255, 255, 0.95); /* Slightly translucent white background */
+    backdrop-filter: blur(8px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border-radius: 20px; /* More rounded corners */
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2); /* More prominent shadow */
+    padding: 40px; /* Increased padding */
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    margin-bottom: 50px; /* More space below header */
+    color: #2d3748; /* Dark text for contrast against white container */
+}
+
+header h1 {
+    font-size: 3rem; /* Larger heading */
+    margin-bottom: 15px;
+    font-weight: 700; /* Bolder font */
+    letter-spacing: -0.5px; /* Tighter letter spacing */
+    /* Changed: Reverted to solid color for heading as gradient text might clash with light blue background */
+    color: #007bb6; /* A slightly darker blue for the heading, or choose a dark neutral */
+    -webkit-background-clip: unset; /* Remove gradient clip */
+    -webkit-text-fill-color: unset; /* Remove gradient fill */
+    text-shadow: none;
+}
+
+header p {
+    font-size: 1.2rem; /* Slightly larger subtitle */
+    color: #555; /* A neutral color for subtitle */
+    /* Changed: Reverted color from previous gradient matching */
+    font-weight: 400;
+}
+
+/* Main Content Layout */
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px; /* Increased gap */
+    align-items: start;
+}
+
+/* Section Styling (Add Task & Tasks List) */
+.add-task-section, .tasks-section {
+    background: #ffffff; /* Pure white for internal sections */
+    padding: 35px; /* Increased padding */
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Softer inner shadow */
+    border: 1px solid #f0f4f8; /* Subtle border */
+}
+
+.add-task-section h2, .tasks-section h2 {
+    margin-bottom: 25px; /* More space below heading */
+    color: #2d3748;
+    font-size: 1.9rem; /* Slightly larger section titles */
+    font-weight: 600;
+    border-bottom: 3px solid #007bb6; /* Underline color matching the new primary color */
+    padding-bottom: 12px;
+    display: inline-block; /* To make underline only as wide as text */
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 25px; /* More space between form groups */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px; /* More space between label and input */
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px 16px; /* Larger padding for inputs */
+    border: 1px solid #cbd5e0; /* Softer border */
+    border-radius: 10px; /* More rounded input fields */
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f8f9fa; /* Light background for inputs */
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #007bb6; /* Focus color matching new primary blue */
+    box-shadow: 0 0 0 4px rgba(0, 123, 182, 0.2); /* Softer glow */
+    background-color: #ffffff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px; /* Slightly taller textarea */
+}
+
+/* Buttons */
+button {
+    background-color: #007bb6; /* Solid blue button */
+    /* Removed: background: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%); */
+    color: white;
+    padding: 14px 28px; /* Larger buttons */
+    border: none;
+    border-radius: 10px; /* More rounded buttons */
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Added background-color to transition */
+    box-shadow: 0 8px 15px rgba(0, 123, 182, 0.3); /* Initial subtle shadow with new color */
+}
+
+button:hover {
+    transform: translateY(-3px); /* More pronounced lift */
+    background-color: #005f90; /* Darker blue on hover */
+    box-shadow: 0 12px 25px rgba(0, 123, 182, 0.4); /* Stronger shadow on hover */
+    opacity: 0.95;
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0, 123, 182, 0.2);
+}
+
+/* Task Cards */
+#tasksContainer {
+    display: grid;
+    gap: 20px; /* Gap between cards */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+}
+
+.task-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px; /* More rounded card corners */
+    padding: 25px; /* Increased padding */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06); /* Softer initial shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.task-card:hover {
+    transform: translateY(-4px); /* Lift effect on hover */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12); /* Stronger shadow on hover */
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px; /* More space below header */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 10px; /* Gap for wrap */
+}
+
+.task-title {
+    font-size: 1.3rem; /* Larger title */
+    font-weight: 700;
+    color: #2d3748;
+    word-break: break-word; /* Prevents long words from overflowing */
+}
+
+.task-status {
+    padding: 6px 15px; /* Larger padding for status badges */
+    border-radius: 25px; /* Pill-shaped badges */
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0; /* Prevent shrinking when space is tight */
+}
+
+.status-pending {
+    background: #ffebe5; /* Lighter red tint */
+    color: #e53e3e; /* Original red */
+}
+
+.status-in-progress {
+    background: #ebf8ff; /* Lighter blue tint */
+    color: #3182ce; /* Original blue */
+}
+
+.status-completed {
+    background: #e6fffa; /* Lighter green tint */
+    color: #38a169; /* Original green */
+}
+
+.task-description {
+    color: #4a5568;
+    margin-bottom: 20px; /* More space below description */
+    line-height: 1.7; /* Increased line height for readability */
+    font-size: 0.95rem;
+}
+
+.task-actions {
+    display: flex;
+    gap: 12px; /* Larger gap between action buttons */
+    margin-top: auto; /* Push actions to the bottom of the card */
+}
+
+.task-actions button {
+    padding: 10px 20px; /* Larger action buttons */
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px; /* Consistent border-radius */
+    box-shadow: none; /* No initial shadow for action buttons */
+    flex-grow: 1; /* Make buttons fill available space */
+}
+
+.task-actions button:hover {
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); /* Subtle shadow on hover */
+}
+
+.btn-edit {
+    background-color: #4299e1; /* Blue */
+}
+
+.btn-edit:hover {
+    background-color: #3182ce; /* Darker blue */
+}
+
+.btn-delete {
+    background-color: #e53e3e; /* Red */
+}
+
+.btn-delete:hover {
+    background-color: #c53030; /* Darker red */
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Darker overlay */
+    backdrop-filter: blur(5px); /* Blurred background for modal */
+    -webkit-backdrop-filter: blur(5px);
+    display: flex; /* For centering content */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto; /* Centering */
+    padding: 35px; /* Increased padding */
+    border-radius: 15px;
+    width: 90%;
+    max-width: 550px; /* Slightly larger max-width */
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3); /* Stronger shadow for modal */
+    animation: fadeIn 0.3s ease-out; /* Simple fade-in animation */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close {
+    color: #999;
+    font-size: 32px; /* Larger close button */
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 25px; /* Adjusted position */
+    top: 20px;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+}
+
+.modal-content h2 {
+    text-align: center;
+    color: #2d3748;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #007bb6; /* Underline color matching the new primary color */
+    padding-bottom: 10px;
+    display: inline-block; /* For underline width */
+    width: auto; /* Ensure it wraps text */
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    position: relative;
+}
+
+/* Message/Status Displays */
+.loading, .error, .success {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Consistent shadow */
+}
+
+.loading {
+    background: #e2e8f0;
+    color: #4a5568;
+    border-left: 5px solid #007bb6; /* Changed border color */
+}
+
+.error {
+    background: #fed7d7;
+    color: #c53030;
+    border-left: 5px solid #e53e3e;
+}
+
+.success {
+    background: #c6f6d5;
+    color: #38a169;
+    border-left: 5px solid #38a169;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    main {
+        grid-template-columns: 1fr; /* Stack columns on tablets */
+        gap: 30px;
+    }
+
+    .container {
+        padding: 30px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 25px;
+        border-radius: 15px;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    header p {
+        font-size: 0.95rem;
+    }
+
+    .add-task-section, .tasks-section {
+        padding: 25px;
+    }
+
+    .add-task-section h2, .tasks-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 12px 14px;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    .task-card {
+        padding: 20px;
+    }
+
+    .task-title {
+        font-size: 1.15rem;
+    }
+
+    .task-status {
+        padding: 4px 10px;
+        font-size: 0.8rem;
+    }
+
+    .task-actions button {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+
+    .modal-content {
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    .close {
+        font-size: 26px;
+        right: 20px;
+        top: 15px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    header {
+        margin-bottom: 30px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    .add-task-section, .tasks-section {
+        padding: 20px;
+    }
+
+    .add-task-section h2, .tasks-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    button {
+        width: 100%; /* Full width for buttons on very small screens */
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    .task-card {
+        padding: 18px;
+    }
+
+    .task-title {
+        font-size: 1.05rem;
+    }
+
+    .task-description {
+        font-size: 0.9rem;
+    }
+
+    .task-actions {
+        flex-direction: column; /* Stack action buttons */
+        gap: 8px;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+    
+    
+}
