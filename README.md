@@ -6,7 +6,7 @@ This repository contains our project for a simple **Distributed Task Manager** a
 
 ## Project Overview
 
-The **Distributed Task Manager** allows users to **create, read, update, and delete tasks** through a clean web interface. Each task includes:
+The **Task Manager** allows users to **create, read, update, and delete tasks** through a clean web interface. Each task includes:
 
 1. **Title**
 2. **Description**
