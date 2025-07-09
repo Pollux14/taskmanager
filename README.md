@@ -1,4 +1,4 @@
-# Distributed Task Manager
+# Task Manager
 
 This repository contains our project for a simple **Distributed Task Manager** application. Built as a full-stack app with separate frontend and backend services, the project demonstrates **Docker containerization** and orchestration with **Docker Compose**.
 
